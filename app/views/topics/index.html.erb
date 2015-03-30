@@ -1,26 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Topics</h1>
+<h1 style="color:#c0c0c0">MessageBoard</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th style="color:#5f9ea0">Name</th>
+      <th style="color:#5f9ea0">Description</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody> 
     <% @topics.each do |topic| %>
   <tr>
-    <td><%= topic.title %></td>
+    <td><%= link_to topic.title, topic %></td>
     <td><%= topic.description %></td>
-    <td><%= pluralize(topic.votes.count, "vote") %></td>
+    <td><%= pluralize(topic.votes.count, "like") %></td>
     <td><%= button_to '+1', upvote_topic_path(topic), method: :post %></td>
-    <td><%= link_to 'Show', topic %></td>
+    <td><%= link_to 'Details', topic %></td>
     <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-    <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Delete', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Topic', new_topic_path %>
+<%= link_to 'New Message', new_topic_path %>
